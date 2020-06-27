@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <style>
+            .container {
+                position: relative;;
+                width: 640px;
+                height:520px;
+                border:1px red  solid;
+            }
+            .toolbox {
+                position: absolute;
+                bottom: 0px;
+                border:1px red  solid;
+                width: 100%;
+                height:50px;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://40.76.47.33/external_api.js"></script>
+        <script src="myapp4.js"></script>
+        
+        <script>
+            $(function(){
+                const urlParams = new URLSearchParams(window.location.search);
+            
+                var meeting_id = urlParams.get('mid');
+                if (!meeting_id) {
+                    alert('meeting id is missing');
+                    return;
+                }
+                var dispNme = window.prompt('Enter your nick!');
+                if (!dispNme) {
+                    dispNme = "New User";
+                }
+                
+                $('#dispName').text(dispNme);
+                $('#joinMsg').text('Joining...');
+                BindEvent();
+                StartMeeting(meeting_id,dispNme);
+                
+            });
+            
+        </script>
+    </head>
+    <body>
+        <h1 id='dispName'></h1>
+        <div id='joinMsg'></div>
+        <div id='container' class="container" style="display:none;">
+            <div id="toolbox" class="toolbox" style="display:none;">
+                <button id='btnHangup'>Hangup</button>
+                <button id='btnCustomMic'>Mic</button>
+                <button id='btnCustomCamera'>Camera</button>
+                <button id='btnCustomTileView'>Toggle Tileview</button>
+                <button id='btnScreenShareCustom'>SS</button>
+            </div>
+            <div id='jitsi-meet-conf-container'></div>
+        </div>
+    </body>
+</html>

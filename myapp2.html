@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <style>
+            .container {
+                position: relative;;
+                width: 720px;
+                height:600px;
+                border:1px red  solid;
+            }
+            .toolbox {
+                position: absolute;
+                bottom: 0px;
+                border:1px red  solid;
+                width: 100%;
+                height:50px;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://40.76.47.33/external_api.js"></script>
+        <script src="myapp2.js"></script>
+        
+        <script>
+            $(function(){
+                $('#btnStart').on('click',function(){
+                    StartMeeting();
+                });
+                $('#btnHangup').on('click',function(){
+                    HangupCall(); 
+                });
+            });
+            
+        </script>
+    </head>
+    <body>
+        <button id='btnStart'>Start</button>
+        
+        <div class="container">
+            <div class="toolbox">
+                <button id='btnHangup'>Hangup</button>
+            </div>
+            <div id='jitsi-meet-conf-container'></div>
+        </div>
+    </body>
+</html>
